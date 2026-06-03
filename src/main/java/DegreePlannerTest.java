@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DegreePlannerTest {
 
-    //helper method to create a temporary test file
+    //helper method to create a temporary test file for simple graphs
 
     private DegreeGraph buildSimpleGraph() throws Exception {
 
@@ -19,6 +19,27 @@ public class DegreePlannerTest {
         writer.println("A,B,C");
         writer.println("A,B");
         writer.println("B,C");
+
+        writer.close();
+
+        DegreeGraph graph = new DegreeGraph();
+
+        graph.buildGraph(file.getAbsolutePath());
+
+        return graph;
+
+    }
+
+    private DegreeGraph buildConcurrentGraph() throws Exception {
+
+        File file = File.createTempFile("plannerTest", "txt");
+
+        PrintWriter writer = new PrintWriter(file);
+
+        writer.println("A,B,C,D");
+        writer.println("A,C");
+        writer.println("B,C");
+        writer.println("C,D");
 
         writer.close();
 
@@ -109,5 +130,40 @@ public class DegreePlannerTest {
         assertEquals("A", plan.get(2).get(0));
     }
 
+    @Test
+    public void testConcurrentCoursesScheduledTogether() throws Exception {
 
+        DegreeGraph graph = buildConcurrentGraph();
+
+        DegreePlanner planner = new DegreePlanner(graph);
+
+        List<List<String>> plan = planner.createStudyPlan(2);
+
+        assertEquals(2, plan.get(2).size());
+    }
+
+    @Test
+    public void testConcurrentLimitNeverExceeded() throws Exception {
+
+        DegreeGraph graph = buildConcurrentGraph();
+
+        DegreePlanner planner = new DegreePlanner(graph);
+
+        List<List<String>> plan = planner.createStudyPlan(2);
+
+        for (List<String> period : plan) {
+
+            assertTrue(period.size() <= 2);
+        }
+    }
+
+    @Test
+    public void testLargeCourseLimit() throws Exception {
+
+        DegreePlanner planner = new DegreePlanner(buildSimpleGraph());
+
+        List<List<String>> plan =  planner.createStudyPlan(10);
+
+        assertEquals(3, plan.size());
+    }
 }
