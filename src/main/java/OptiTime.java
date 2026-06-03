@@ -35,7 +35,8 @@ public class OptiTime {
         List<List<String>> plan = planner.createStudyPlan(maxCourses);
 
         for (int i = 0; i < plan.size(); i++) {
-            System.out.println("Study Period " + (i+1) + ": " + plan.get(i));
+            System.out.println("Study Period " + (i+1) + ": ");
+            System.out.println(plan.get(i));
         }
 
         System.out.println("\nTotal Study Periods: " + plan.size());
