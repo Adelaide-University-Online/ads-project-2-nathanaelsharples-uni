@@ -60,6 +60,10 @@ public class DegreeGraph {
 
                 Course prereq = courses.get(prereqCode);
 
+                if (prereq == null) {
+                    throw new IllegalArgumentException ("Prerequisite course '" + prereqCode + "' does not exist in the course list.");
+                }
+
                 prereq.addDependent(course);
 
                 indegrees.put(courseCode, indegrees.get(courseCode) + 1);
