@@ -59,4 +59,55 @@ public class CourseTest {
 
         assertEquals("COMP2627", course.toString());
     }
+
+    @Test
+    public void testEqualsSameCode() {
+
+        Course course1 = new Course("COMP2627");
+        Course course2 = new Course("COMP2627");
+
+        assertEquals(course1, course2);
+    }
+
+    @Test
+    public void testEqualsDifferentCode() {
+
+        Course course1 = new Course("COMP2627");
+        Course course2 = new Course("COMP1617");
+
+        assertNotEquals(course1, course2);
+    }
+
+    @Test
+    public void testEqualsSameObject() {
+
+        Course course = new Course ("COMP2627");
+
+        assertEquals(course, course);
+    }
+
+    @Test
+    public void testEqualsDifferentType() {
+        Course course = new Course("COMP2627");
+
+        assertNotEquals(course, "COMP22627");
+    }
+
+    @Test
+    public void testHashCodeEqualObjects() {
+
+        Course course1 = new Course("COMP2627");
+        Course course2 = new Course("COMP2627");
+
+        assertEquals(course1.hashCode(), course2.hashCode());
+    }
+
+    @Test
+    public void testHashCodeDifferentObjects() {
+
+        Course course1 = new Course("COMP2627");
+        Course course2 = new Course("COMP1617");
+
+        assertNotEquals(course1.hashCode(), course2.hashCode());
+    }
 }
