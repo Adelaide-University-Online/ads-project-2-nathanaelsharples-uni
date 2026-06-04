@@ -67,5 +67,8 @@ public class OptiTime {
 
         //display the total number of study periods required
         System.out.println("\nTotal Study Periods: " + plan.size());
+
+        //close scanner to release system resources
+        keyboard.close();
     }
 }
