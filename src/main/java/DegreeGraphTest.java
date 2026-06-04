@@ -130,4 +130,16 @@ public class DegreeGraphTest {
 
         assertNull(graph.getCourse("COMP2627"));
     }
+
+    @Test
+    public void testMissingPrerequisiteThrowsException() {
+
+        DegreeGraph graph = new DegreeGraph();
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            graph.buildGraph("InvalidPrereq.txt");
+        });
+
+        assertEquals("Prerequisite course 'COMP9999' does not exist in the course list.", exception.getMessage());
+    }
 }
