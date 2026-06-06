@@ -1,3 +1,14 @@
+/**
+ * File: Course.java
+ * Description: Representation of a single course in the degree graph.
+ * Author: Nathanael Sharples
+ * Student ID: a2983892
+ * Email ID: a2983892@adelaide.edu.au
+ * AI Tool Used: Yes. Chat gpt was used for research and help with some code logic.
+ * This is my own work as defined by
+ *    the University's Academic Integrity Policy.
+ **/
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
