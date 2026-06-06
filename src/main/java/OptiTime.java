@@ -1,3 +1,14 @@
+/**
+ * File: OptiTime.java
+ * Description: The main driver class of the degree planning application.
+ * Author: Nathanael Sharples
+ * Student ID: a2983892
+ * Email ID: a2983892@adelaide.edu.au
+ * AI Tool Used: Yes. Chat gpt was used for research and help with some code logic.
+ * This is my own work as defined by
+ *    the University's Academic Integrity Policy.
+ **/
+
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
@@ -11,7 +22,7 @@ import java.util.Scanner;
  * based on the maximum number of courses that can be completed in each
  * study period.
  *
- */
+ **/
 public class OptiTime {
 
     /**
@@ -24,7 +35,7 @@ public class OptiTime {
      *
      * @param args command-line arguments (not used in this program)
      * @throws FileNotFoundException if the specific input file cannot be found
-     */
+     **/
     public static void main(String[] args) throws FileNotFoundException {
 
         //scanner used to read user input from the keyboard
