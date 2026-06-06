@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DegreeGraphTest {
 
     //helper method to create a temporary test file
-
     private String createTestFile() throws Exception {
 
         File file = File.createTempFile("degreeGraphTest", ".txt");
@@ -36,6 +35,7 @@ public class DegreeGraphTest {
         return file.getAbsolutePath();
     }
 
+    //test that all courses in the input file are added to the graph
     @Test
     public void testGraphBuildsCorrectNumberOfCourses() throws Exception {
 
@@ -46,6 +46,7 @@ public class DegreeGraphTest {
         assertEquals(3, graph.getCourse().size());
     }
 
+    //test that course A is created during graph construction
     @Test
     public void testCourseAExists() throws Exception {
 
@@ -56,6 +57,7 @@ public class DegreeGraphTest {
         assertNotNull(graph.getCourse("A"));
     }
 
+    //test that course B is created during graph construction
     @Test
     public void testCourseBExists() throws Exception {
 
@@ -66,6 +68,7 @@ public class DegreeGraphTest {
         assertNotNull(graph.getCourse("B"));
     }
 
+    //test that course C is created during graph construction
     @Test
     public void testCourseCExists() throws Exception {
 
@@ -76,6 +79,7 @@ public class DegreeGraphTest {
         assertNotNull(graph.getCourse("C"));
     }
 
+    //test that course A has the correct indegree value
     @Test
     public void testIndegreeOfA() throws Exception {
 
@@ -86,6 +90,7 @@ public class DegreeGraphTest {
         assertEquals(1, graph.getIndegree("A"));
     }
 
+    //test that course B has the correct indegree value
     @Test
     public void testIndegreeOfB() throws Exception {
 
@@ -96,6 +101,7 @@ public class DegreeGraphTest {
         assertEquals(1, graph.getIndegree("B"));
     }
 
+    //test that course C has the correct indegree value
     @Test
     public void testIndegreeOfC() throws Exception {
 
@@ -106,6 +112,7 @@ public class DegreeGraphTest {
         assertEquals(0, graph.getIndegree("C"));
     }
 
+    //test that the prerequisite relationship B -> A is created correctly
     @Test
     public void testEdgeCreatedBetweenBAndA() throws Exception {
 
@@ -118,6 +125,7 @@ public class DegreeGraphTest {
         assertEquals ("A", b.getDependents().get(0).getCode());
     }
 
+    //test the copyIndegrees() returns an independent copy of the map
     @Test
     public void testCopyIndegreesCreatesSeparateMap() throws Exception {
 
@@ -132,6 +140,7 @@ public class DegreeGraphTest {
         assertEquals(1, graph.getIndegree("A"));
     }
 
+    //test that requesting a non-existent course returns null
     @Test
     public void testGetCourseReturnsNullForUnknownCourse() throws Exception {
 
@@ -142,6 +151,7 @@ public class DegreeGraphTest {
         assertNull(graph.getCourse("COMP2627"));
     }
 
+    //test that an exception is thrown when a prerequisite does not exist
     @Test
     public void testMissingPrerequisiteThrowsException() {
 
