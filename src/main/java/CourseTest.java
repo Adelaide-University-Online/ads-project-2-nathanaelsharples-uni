@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CourseTest {
+
+    //test course constructor stores code
     @Test
     public void testConstructorStoresCode() {
 
@@ -21,6 +23,7 @@ public class CourseTest {
         assertEquals("COMP2627", course.getCode());
     }
 
+    //test dependent list is initially empty
     @Test
     public void testDependentsInitiallyEmpty() {
 
@@ -29,6 +32,7 @@ public class CourseTest {
         assertTrue(course.getDependents().isEmpty());
     }
 
+    //test dependents are added to list
     @Test
     public void testAddSingleDependent() {
 
@@ -40,6 +44,7 @@ public class CourseTest {
         assertEquals(1, course.getDependents().size());
     }
 
+    //test dependent is stored correctly
     @Test
     public void testAddSingleDependentStoredCorrectly() {
 
@@ -51,6 +56,7 @@ public class CourseTest {
         assertEquals("COMP1043", course.getDependents().get(0).getCode());
     }
 
+    //test dependents are stored correctly
     @Test
     public void testAddMultipleDependents() {
 
@@ -63,6 +69,7 @@ public class CourseTest {
         assertEquals(3, course.getDependents().size());
     }
 
+    //test toString method
     @Test
     public void testToStringReturnsCourseCode() {
 
@@ -71,6 +78,7 @@ public class CourseTest {
         assertEquals("COMP2627", course.toString());
     }
 
+    //test equals method with same code
     @Test
     public void testEqualsSameCode() {
 
@@ -80,6 +88,7 @@ public class CourseTest {
         assertEquals(course1, course2);
     }
 
+    //test equals method with different codes
     @Test
     public void testEqualsDifferentCode() {
 
@@ -89,6 +98,7 @@ public class CourseTest {
         assertNotEquals(course1, course2);
     }
 
+    //test equals method with same object
     @Test
     public void testEqualsSameObject() {
 
@@ -97,13 +107,15 @@ public class CourseTest {
         assertEquals(course, course);
     }
 
+    //test equals method are different types
     @Test
     public void testEqualsDifferentType() {
         Course course = new Course("COMP2627");
 
-        assertNotEquals(course, "COMP22627");
+        assertNotEquals(course, "COMP2627");
     }
 
+    //test hashcode with same object
     @Test
     public void testHashCodeEqualObjects() {
 
@@ -113,6 +125,7 @@ public class CourseTest {
         assertEquals(course1.hashCode(), course2.hashCode());
     }
 
+    //test hashcode with different objects
     @Test
     public void testHashCodeDifferentObjects() {
 
