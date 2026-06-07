@@ -4,7 +4,7 @@
  * Author: Nathanael Sharples
  * Student ID: a2983892
  * Email ID: a2983892@adelaide.edu.au
- * AI Tool Used: Yes. Chat gpt was used for research and help with some code logic.
+ * AI Tool Used: Yes. ChatGPT was used for research and help with some code logic.
  * This is my own work as defined by
  *    the University's Academic Integrity Policy.
  **/
