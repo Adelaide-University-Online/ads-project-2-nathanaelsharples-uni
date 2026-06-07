@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DegreePlannerTest {
 
     //helper method to create a temporary test file for simple graphs
-
     private DegreeGraph buildSimpleGraph() throws Exception {
 
         File file = File.createTempFile("plannerTest", "txt");
@@ -41,6 +40,7 @@ public class DegreePlannerTest {
 
     }
 
+    //helper method to create a temporary test file for concurrent graphs
     private DegreeGraph buildConcurrentGraph() throws Exception {
 
         File file = File.createTempFile("plannerTest", "txt");
@@ -61,6 +61,7 @@ public class DegreePlannerTest {
         return graph;
     }
 
+    //tests that the generated course order contains every course in the graph
     @Test
     public void testCourseOrderContainsAllCourses() throws Exception {
 
@@ -71,6 +72,7 @@ public class DegreePlannerTest {
         assertEquals(3, order.size());
     }
 
+    //tests that prerequisite course C appears before course B in the ordering
     @Test
     public void testPrerequisiteCAppearsBeforeB() throws Exception {
 
@@ -81,6 +83,7 @@ public class DegreePlannerTest {
         assertTrue(order.indexOf("C") < order.indexOf("B"));
     }
 
+    //tests that prerequisite course B appears before course A in the ordering
     @Test
     public void testPrerequisiteBAppearsBeforeA() throws Exception {
 
@@ -91,6 +94,7 @@ public class DegreePlannerTest {
         assertTrue(order.indexOf("B") < order.indexOf("A"));
     }
 
+    //tests that the first course in the ordering is the course with no prerequisites
     @Test
     public void testFirstCourseIsC() throws Exception {
 
@@ -101,6 +105,7 @@ public class DegreePlannerTest {
         assertEquals("C", order.get(0));
     }
 
+    //tests that a study plan with a limit of one course per period creates three periods
     @Test
     public void testThreeStudyPeriodsWithLimitedOne() throws Exception {
 
@@ -111,6 +116,7 @@ public class DegreePlannerTest {
         assertEquals(3, plan.size());
     }
 
+    //tests that course C is scheduled in the first study period
     @Test
     public void testFirstStudyPeriodContainsC() throws Exception {
 
@@ -121,6 +127,7 @@ public class DegreePlannerTest {
         assertEquals("C", plan.get(0).get(0));
     }
 
+    //tests that course B is scheduled in the second study period
     @Test
     public void testSecondStudyPeriodContainsB() throws Exception {
 
@@ -131,6 +138,7 @@ public class DegreePlannerTest {
         assertEquals("B", plan.get(1).get(0));
     }
 
+    //tests that course A is scheduled in the third study period
     @Test
     public void testThirdStudyPeriodContainsA() throws Exception {
 
@@ -141,6 +149,7 @@ public class DegreePlannerTest {
         assertEquals("A", plan.get(2).get(0));
     }
 
+    //tests that independent courses can be scheduled together when concurrency allows
     @Test
     public void testConcurrentCoursesScheduledTogether() throws Exception {
 
@@ -153,6 +162,7 @@ public class DegreePlannerTest {
         assertEquals(2, plan.get(2).size());
     }
 
+    //tests that no study period exceeds the maximum concurrent course limit
     @Test
     public void testConcurrentLimitNeverExceeded() throws Exception {
 
@@ -168,6 +178,7 @@ public class DegreePlannerTest {
         }
     }
 
+    //tests that a large concurrency limit does not create extra study periods
     @Test
     public void testLargeCourseLimit() throws Exception {
 
